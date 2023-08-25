@@ -21,19 +21,23 @@
         background-color: black;
         color: white;
       }
+
       .myDiv {
         border: 5px outset red;
         text-align: center;
       }
+
       .left,
       .right {
         float: left;
-        width: 20%; /* Left side is 20% screen size */
+        width: 20%;
+        /* Left side is 20% screen size */
       }
 
       .main {
         float: left;
-        width: 60%; /* 60% screen size default */
+        width: 60%;
+        /* 60% screen size default */
       }
 
       /* When screen is less than 800 px then compress*/
@@ -44,7 +48,7 @@
           width: 100%;
         }
 
-	    .inline-container {
+        .inline-container {
           white-space: nowrap;
         }
 
@@ -54,8 +58,8 @@
       }
     </style>
   </head>
-  <body>
 
+  <body>
     <h1>This Page is a display of JavaScript and Responsive web aspects</h1>
     <h2>Lets start with some responsive web</h2>
     <br />
@@ -110,107 +114,160 @@
       <h3>The current count of errors is: {{count}}</h3>
       <h3>Update Error Count:</h3>
       <input type="number" v-model="count" />
-        <br>
+      <br />
       <h2>Here are some numberic assessors</h2>
-      <h3>Is this variable '{{count}}' an integer: {{Number.isInteger(count)}}</h3>
-      <h3>Is this variable '{{string_test}}' an integer: {{Number.isInteger(string_test)}}</h3>
-      <h3>Convert Integer to String and check: {{count.toString()}}, int check: {{Number.isInteger(count.toString())}}</h3>
-      <br>
+      <h3>
+        Is this variable '{{count}}' an integer: {{Number.isInteger(count)}}
+      </h3>
+      <h3>
+        Is this variable '{{string_test}}' an integer:
+        {{Number.isInteger(string_test)}}
+      </h3>
+      <h3>
+        Convert Integer to String and check: {{count.toString()}}, int check:
+        {{Number.isInteger(count.toString())}}
+      </h3>
+      <br />
       <h2>Here are some number functions</h2>
       <h3>We will work with this integer: {{test_int}}</h3>
-      <h3>Raise number to an input exponent: {{test_int.toExponential(exponent)}}</h3>
-      <input type="number" v-model="exponent" step="1"/>
-      <h3>Use a specified number of decimal places: {{test_int.toFixed(places)}}</h3>
-      <input type="number" v-model="places" step="1"/>
-      <h3>Use a specified number of total digits: {{test_int.toPrecision(digits)}}</h3>
-      <input type="number" v-model="digits" step="1"/>
+      <h3>
+        Raise number to an input exponent: {{test_int.toExponential(exponent)}}
+      </h3>
+      <input type="number" v-model="exponent" step="1" />
+      <h3>
+        Use a specified number of decimal places: {{test_int.toFixed(places)}}
+      </h3>
+      <input type="number" v-model="places" step="1" />
+      <h3>
+        Use a specified number of total digits: {{test_int.toPrecision(digits)}}
+      </h3>
+      <input type="number" v-model="digits" step="1" />
       <h3>We can convert a date to a number, using current date: {{date}}</h3>
       <button v-on:click="get_date">Click to get date</button>
       <h3>Convert the date into a number: {{Number(date)}}</h3>
     </div>
 
-    <div id="arrays" class="myDiv" style="background-color: darkgreen;">
-        <h1>Array Type Methods and interactions with JS</h1>
-        <br />
-        <h3>The arrays in use are :{{list}} and {{numbers_list}}</h3>
-        <h3>Length of string array is {{list.length}} and integer array is {{numbers_list.length}}</h3>
-        <br>
-        <h2>We can add and remove elements from the array</h2>
-        <label for="push" style="font-size: 17px;">Input text to be added to the array:  </label>
-  	    <input type="text" id="push" v-model="arr_input"/>
-        <button v-on:click="unshift_arr">Push start of array</button>
-  	    <button v-on:click="push_arr">Push end of array</button>
-        <br><br>
-        <button v-on:click="list.shift()">Click to remove first entry</button>
-        <button v-on:click="list.pop()">Click to remove last entry</button>
-        <br>
+    <div id="arrays" class="myDiv" style="background-color: darkgreen">
+      <h1>Array Type Methods and interactions with JS</h1>
+      <br />
+      <h3>The arrays in use are :{{list}} and {{numbers_list}}</h3>
+      <h3>
+        Length of string array is {{list.length}} and integer array is
+        {{numbers_list.length}}
+      </h3>
+      <br />
+      <h2>We can add and remove elements from the array</h2>
+      <label for="push" style="font-size: 17px"
+        >Input text to be added to the array:
+      </label>
+      <input type="text" id="push" v-model="arr_input" />
+      <button v-on:click="unshift_arr">Push start of array</button>
+      <button v-on:click="push_arr">Push end of array</button>
+      <br /><br />
+      <button v-on:click="list.shift()">Click to remove first entry</button>
+      <button v-on:click="list.pop()">Click to remove last entry</button>
+      <br />
 
-        <h2>We can also access individual elements</h2>
-        <label for="change" style="font-size: 17px;">Select an array index numer to change:   </label>
-        <input type="number" id="change" v-model="index" step="1" @input="valid_index"/>
-        <span v-if="!is_valid_index" style="color: red;"><b>Invalid Index</b></span>
+      <h2>We can also access individual elements</h2>
+      <label for="change" style="font-size: 17px"
+        >Select an array index numer to change:
+      </label>
+      <input
+        type="number"
+        id="change"
+        v-model="index"
+        step="1"
+        @input="valid_index"
+      />
+      <span v-if="!is_valid_index" style="color: red"
+        ><b>Invalid Index</b></span
+      >
 
-        <h3>Currently selected item: {{list[index]}}</h3>
-        <label for="var" style="font-size: 17px;">Enter a new value to update selected index to:   </label>
-        <input type="text" id="var" v-model="temp_element"/>
-        <button v-if="!is_valid_index"><b style="color: red;">Invalid Index</b></button>
-        <button v-if="is_valid_index" v-on:click="update_element">Update Element</button>
-        <br>
-        <h2>More functions: Merging, Splicing</h2>
-        <h3> We can merge the two arrays using "concat()"</h3>
-        <h3> Combined arrays: {{combined_array}}</h3>
-        <button v-on:click="string_array">Combine Arrays</button>
+      <h3>Currently selected item: {{list[index]}}</h3>
+      <label for="var" style="font-size: 17px"
+        >Enter a new value to update selected index to:
+      </label>
+      <input type="text" id="var" v-model="temp_element" />
+      <button v-if="!is_valid_index">
+        <b style="color: red">Invalid Index</b>
+      </button>
+      <button v-if="is_valid_index" v-on:click="update_element">
+        Update Element
+      </button>
+      <br />
+      <h2>More functions: Merging, Splicing</h2>
+      <h3>We can merge the two arrays using "concat()"</h3>
+      <h3>Combined arrays: {{combined_array}}</h3>
+      <button v-on:click="string_array">Combine Arrays</button>
 
-        <h3> We can add new items to an array at a given index and remove elements too</h3>
-        <label for="splice" style="font-size: 17px;">Hit button to add Kiwi and Mango at index 2, removing 1 element:   </label>
-        <button id="splice" v-on:click="do_splice">Execute</button>
-        
+      <h3>
+        We can add new items to an array at a given index and remove elements
+        too
+      </h3>
+      <label for="splice" style="font-size: 17px"
+        >Hit button to add Kiwi and Mango at index 2, removing 1 element:
+      </label>
+      <button id="splice" v-on:click="do_splice">Execute</button>
     </div>
 
-    <div id="time" class="myDiv" style="background-color: darkgoldenrod;">
-        <h1>Date & Time Type Methods and interactions with JS</h1>
-        <br />
-        <h3> We can get full curent date information as a date object using "new Date()"</h3>
-        <h3>{{cur_date}}</h3>
-        <button v-on:click="update_date">Update Date</button>
+    <div id="time" class="myDiv" style="background-color: darkgoldenrod">
+      <h1>Date & Time Type Methods and interactions with JS</h1>
+      <br />
+      <h3>
+        We can get full curent date information as a date object using "new
+        Date()"
+      </h3>
+      <h3>{{cur_date}}</h3>
+      <button v-on:click="update_date">Update Date</button>
 
-        <h3>We have also got different representations for time:</h3>
-        <h3>More readable date format: {{new Date().toDateString()}}</h3>
-        <h3>ISO date format: {{new Date().toISOString()}}</h3>
-        <h3>UTC date format: {{new Date().toUTCString()}}</h3>
-        <br>
-        <h2>We can also create our own dates, either relative to zero time or at specific times</h2>
-        <h3> Zero time is: {{new Date(0)}}</h3>
-        <h3> Adding 600000000000 milliseconds to zero time is: {{new Date(600000000000)}}</h3>
-        <br>
-        <h3>Now lets do some specific times, first for Year, month, day, hour, minute, then remove one element every time</h3>
-        <h3>{{new Date(2001,4,57,23,26,34).toUTCString()}}</h3>
-        <h3>{{new Date(2811,11,2,59,12).toUTCString()}}</h3>
-        <h3>{{new Date(19,3,47,30).toUTCString()}}</h3>
-        <h3>{{new Date(60,12,33).toUTCString()}}</h3>
-        <h3>You must include year month at minimum: {{new Date(4962,1).toDateString()}}</h3>
-    
+      <h3>We have also got different representations for time:</h3>
+      <h3>More readable date format: {{new Date().toDateString()}}</h3>
+      <h3>ISO date format: {{new Date().toISOString()}}</h3>
+      <h3>UTC date format: {{new Date().toUTCString()}}</h3>
+      <br />
+      <h2>
+        We can also create our own dates, either relative to zero time or at
+        specific times
+      </h2>
+      <h3>Zero time is: {{new Date(0)}}</h3>
+      <h3>
+        Adding 600000000000 milliseconds to zero time is: {{new
+        Date(600000000000)}}
+      </h3>
+      <br />
+      <h3>
+        Now lets do some specific times, first for Year, month, day, hour,
+        minute, then remove one element every time
+      </h3>
+      <h3>{{new Date(2001,4,57,23,26,34).toUTCString()}}</h3>
+      <h3>{{new Date(2811,11,2,59,12).toUTCString()}}</h3>
+      <h3>{{new Date(19,3,47,30).toUTCString()}}</h3>
+      <h3>{{new Date(60,12,33).toUTCString()}}</h3>
+      <h3>
+        You must include year month at minimum: {{new
+        Date(4962,1).toDateString()}}
+      </h3>
     </div>
 
     <div class="myDiv" style="background-color: purple">
-    <h1> Functions are already everywhere!!!</h1>
+      <h1>Functions are already everywhere!!!</h1>
     </div>
 
-    <br><br><br><br><br><br><br><br>
+    <br /><br /><br /><br /><br /><br /><br /><br />
 
-    <div id="app" class="myDiv"> 
-        <h1>  {{message}}  </h1>
-        <div style="text-align: left;">
-        <input type="text" v-model="shopitem"/>
+    <div id="app" class="myDiv">
+      <h1>{{message}}</h1>
+      <div style="text-align: left">
+        <input type="text" v-model="shopitem" />
         <button @click="addItem">Add shopping Items</button>
-        <br>
+        <br />
         <ol>
-            <li v-for="i in shoplist" :key="i.itemID">
-                {{i.value}}
-                <button @click="removeItem(i.id)">X</button>
-            </li>
+          <li v-for="i in shoplist" :key="i.itemID">
+            {{i.value}}
+            <button @click="removeItem(i.id)">X</button>
+          </li>
         </ol>
-    </div>
+      </div>
     </div>
 
     <!-- script section where we write the vue js code -->
@@ -267,31 +324,34 @@
           };
         },
         methods: {
-        push_arr() {
+          push_arr() {
             this.list.push(this.arr_input);
             this.arr_input = "";
-        },
-        unshift_arr() {
+          },
+          unshift_arr() {
             this.list.unshift(this.arr_input);
             this.arr_input = "";
-        },
-        update_element() {
+          },
+          update_element() {
             if (this.index >= 0 && this.index < this.list.length) {
-            this.list[this.index] = this.temp_element;
-            this.temp_element = "";
+              this.list[this.index] = this.temp_element;
+              this.temp_element = "";
             }
-        },
-        valid_index() {
+          },
+          valid_index() {
             const current_index = parseInt(this.index);
-            this.is_valid_index = current_index >= 0 && current_index < this.list.length;
-        },
-        string_array() {
-            this.combined_array = this.numbers_list.map(number => number.toString());
+            this.is_valid_index =
+              current_index >= 0 && current_index < this.list.length;
+          },
+          string_array() {
+            this.combined_array = this.numbers_list.map((number) =>
+              number.toString()
+            );
             this.combined_array = this.list.concat(this.combined_array);
-        },
-        do_splice() {
+          },
+          do_splice() {
             this.list.splice(2, 1, "Kiwi", "Mango");
-        }
+          },
         },
       }).mount("#arrays");
 
@@ -299,40 +359,37 @@
         data() {
           return {
             cur_date: null,
-
           };
         },
         methods: {
-            update_date () {
-                this.cur_date = new Date()
-            },
-
+          update_date() {
+            this.cur_date = new Date();
+          },
         },
       }).mount("#time");
 
-      let itemID = 0
+      let itemID = 0;
       const app = createApp({
-          data() {
-              return {
-                  message: "*SECRET*   Shopping list! VUE test",
-                  shopitem: "",
-                  shoplist: [],
-              };
+        data() {
+          return {
+            message: "*SECRET*   Shopping list! VUE test",
+            shopitem: "",
+            shoplist: [],
+          };
+        },
+        methods: {
+          addItem() {
+            this.shoplist.push({
+              id: itemID++,
+              value: this.shopitem,
+            });
+            this.shopitem = "";
           },
-          methods: {
-              addItem() {
-                  this.shoplist.push({
-                      id: itemID++,
-                      value: this.shopitem,
-                  });
-                  this.shopitem = "";
-              },
-              removeItem(id){
-                  this.shoplist = this.shoplist.filter((t) => t.id !== id)
-              },
+          removeItem(id) {
+            this.shoplist = this.shoplist.filter((t) => t.id !== id);
           },
+        },
       }).mount("#app");
-
     </script>
   </body>
 </html>
